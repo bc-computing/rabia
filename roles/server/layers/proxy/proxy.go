@@ -173,17 +173,17 @@ MainLoop:
 			}
 
 		case _ = <-batchClock.C: // time-based proxy batch
-			if IdsSqsCtr != 0 {
-				obj := ConsensusObj{ProId: p.SvrId, ProSeq: uint32(ProSeq),
-					CliIds: CliIds[:IdsSqsCtr], CliSeqs: CliSqs[:IdsSqsCtr], Commands: Values[:ValuesCtr]}
-				p.ToNet <- Msg{Type: ClientRequest, Obj: &obj}
-				CliIds = make([]uint32, Conf.ProxyBatchSize)
-				CliSqs = make([]uint32, Conf.ProxyBatchSize)
-				Values = make([]string, Conf.ProxyBatchSize*Conf.ClientBatchSize)
-				IdsSqsCtr = 0
-				ValuesCtr = 0
-				ProSeq++
-			}
+			// if IdsSqsCtr != 0 {
+			// 	obj := ConsensusObj{ProId: p.SvrId, ProSeq: uint32(ProSeq),
+			// 		CliIds: CliIds[:IdsSqsCtr], CliSeqs: CliSqs[:IdsSqsCtr], Commands: Values[:ValuesCtr]}
+			// 	p.ToNet <- Msg{Type: ClientRequest, Obj: &obj}
+			// 	CliIds = make([]uint32, Conf.ProxyBatchSize)
+			// 	CliSqs = make([]uint32, Conf.ProxyBatchSize)
+			// 	Values = make([]string, Conf.ProxyBatchSize*Conf.ClientBatchSize)
+			// 	IdsSqsCtr = 0
+			// 	ValuesCtr = 0
+			// 	ProSeq++
+			// }
 
 		case _ = <-p.NetIn: // dec msg -> reply
 			panic("this channel is reserved only, no msg should come in")

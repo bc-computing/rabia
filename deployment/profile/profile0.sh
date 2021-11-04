@@ -108,31 +108,31 @@ NClientRequests:      if set to 0, then it becomes the default value 10000000 --
 END
 
 # Section 1. user configurations - type 1 (see comments above for their meanings)
-ServerIps=(localhost)
-ClientIps=(localhost)
-Controller=localhost:8070
+ServerIps=(128.110.217.65 128.110.217.26 128.110.217.62)
+ClientIps=(128.110.218.250 128.110.219.11 128.110.218.244)
+Controller=128.110.217.65:8070
 ProxyStartPort=18080
 NetworkStartPort=28080
 
 User="$USER"
-RCFolder=~/go/src/rabia
+RCFolder=/usr/local/go/src/rabia
 
 # Section 2. user configurations - type 2 (see comments above for their meanings)
 
-RCLogLevel=warn
-Rabia_ClosedLoop=true
+RCLogLevel=debug
+Rabia_ClosedLoop=false
 Rabia_ClientDistributingMethod=modulo # ad-hoc | modulo
 Rabia_ClientsPerServer=(1 0 0)
 
 NServers=3
 NFaulty=1
-NClients=1
+NClients=50
 NConcurrency=1
-ClientTimeout=20
+ClientTimeout=20000
 ClientThinkTime=0
-ClientBatchSize=1
-ProxyBatchSize=1
-ProxyBatchTimeout=10
+ClientBatchSize=100
+ProxyBatchSize=20
+ProxyBatchTimeout=5000000
 NetworkBatchSize=0
 NetworkBatchTimeout=0
 NClientRequests=0
@@ -331,3 +331,4 @@ download_logs() {
     done
     wait
 }
+

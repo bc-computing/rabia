@@ -42,7 +42,7 @@ run_once() {
   # 2. build Rabia binary
   build_binary
   # 3. start all servers
-  single_start_servers
+  # single_start_servers
   # 4. start all clients
   single_start_clients
   # 5. start the controller and wait its return
